@@ -1,14 +1,14 @@
 #include "SimpleLexer.hpp"
 #include <iostream>
+
 int main(int argc, char const *argv[])
 {
     /* code */
-    SimpleLexer lexer; 
-    // std::cout << isblank('a');
+    SimpleLexer *lexer = new SimpleLexer();
+    std::string script = "int age = 45;";
+    std::cout << "parse :" << script << std::endl;
+    SimpleTokenReader *tokenReader = lexer->tokenize(script);
+    lexer->dump(tokenReader);
 
-    std::vector<int> a = {1,2,3,4,5,6};
-    int pos = 0;
-    std::cout << a[pos++] << "\n";
-    std::cout << a[pos++] << "\n";
     return 0;
 }
