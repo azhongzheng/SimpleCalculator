@@ -1,6 +1,5 @@
 #include <vector>
 #include <iostream>
-// #include "TokenType::hpp"
 
 namespace Token
 {
