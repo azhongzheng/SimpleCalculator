@@ -148,9 +148,9 @@ class SimpleLexer:
             self.initToken('0')
         return self.tokens
 
+
 if __name__ == "__main__":
     lexer = SimpleLexer()
     code = "int age = 45"
     lexer.tokenize(code)
     print(lexer.tokens)
-
