@@ -91,18 +91,18 @@ class SimpleLexer:
         return newState
 
     def tokenize(self, code: str):
-
+        
         state = DfaState.Initial
         for ch in code:
             if state == DfaState.Initial:
                 state = self.initToken(ch)
-                continue
+
             elif state == DfaState.Id:
                 if ch.isalpha() or ch.isdigit():
                     self.tokenText += ch
                 else:
                     state = self.initToken(ch)
-                continue
+
             elif state == DfaState.Assignment:
                 state = self.initToken(ch)
 
@@ -111,7 +111,6 @@ class SimpleLexer:
                     self.tokenText += ch
                 else:
                     state = self.initToken(ch)
-                continue
 
             elif state == DfaState.Id_int1:
                 if ch == 'n':
@@ -122,7 +121,7 @@ class SimpleLexer:
                     self.tokenText += ch
                 else:
                     state = self.initToken(ch)
-                    continue
+
             elif state == DfaState.Id_int2:
                 if ch == 'n':
                     state = DfaState.Id_int3
@@ -132,7 +131,7 @@ class SimpleLexer:
                     self.tokenText += ch
                 else:
                     state = self.initToken(ch)
-                continue
+
             elif state == DfaState.Id_int3:
                 if ch.isspace():
                     state = DfaState.Int
@@ -140,12 +139,11 @@ class SimpleLexer:
                 else:
                     state = DfaState.Id
                     self.tokenText += ch
-                continue
             else:
-                continue
+                pass
 
         if len(self.tokenText) > 0:
-            self.initToken('0')
+            self.initToken(ch)
         return self.tokens
 
 
