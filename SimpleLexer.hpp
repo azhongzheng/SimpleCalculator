@@ -112,12 +112,10 @@ public:
         DfaState state = DfaState::Initial;
         for (auto ch : code)
         {
-            // std::cout << ch << " ";
             switch (state)
             {
             case DfaState::Initial:
                 state = initToken(ch);
-                // std::cout << ch << "\n";
                 break;
             case DfaState::Id:
                 if (isalpha(ch) || isdigit(ch))
@@ -145,7 +143,7 @@ public:
             case DfaState::Id_int1:
                 if (ch == 'n')
                 {
-                    state = DfaState::Id_int1;
+                    state = DfaState::Id_int2;
                     tokenText += ch;
                 }
                 else if (isdigit(ch) || isalpha(ch))
