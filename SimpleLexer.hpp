@@ -13,6 +13,9 @@ public:
     SimpleToken() {}
     TokenType getType() { return type; }
     std::string getText() { return text; }
+    friend class SimpleLexer;
+
+private:
     TokenType type;
     std::string text;
 };
@@ -101,7 +104,7 @@ public:
         }
         else
             newState = DfaState::Initial; // skip all unknown patterns
-   
+
         return newState;
     }
 
